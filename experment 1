@@ -1,49 +1,94 @@
-# Water Jug Problem using Depth First Search
-
-jug1_capacity = int(input("Enter capacity of Jug 1: "))
-jug2_capacity = int(input("Enter capacity of Jug 2: "))
-target = int(input("Enter target amount of water: ")) 
-
-visited = set()
-path = []
-
-def dfs(a, b):
-    # Goal condition
-    if a == target or b == target:
-        path.append((a, b))
-        return True
-
-    if (a, b) in visited:
-        return False
-
-    visited.add((a, b))
-    path.append((a, b))
-
-    next_states = []
-    # Fill Jug 1
-    next_states.append((jug1_capacity, b))
-    # Fill Jug 2
-    next_states.append((a, jug2_capacity))
-    # Empty Jug 1
-    next_states.append((0, b))
-    # Empty Jug 2
-    next_states.append((a, 0))
-    # Pour Jug 1 -> Jug 2
-    pour = min(a, jug2_capacity - b)
-    next_states.append((a - pour, b + pour))
-    # Pour Jug 2 -> Jug 1
-    pour = min(b, jug1_capacity - a)
-    next_states.append((a + pour, b - pour))
-
-    for state in next_states:
-        if state not in visited:
-            if dfs(state[0], state[1]):
-                return True
-
-    path.pop()
-    return False
-
-dfs(0, 0)
-print("Solution Path:")
-for step in path:
-    print(step)
+%runfile C:/Users/Lenovo/.spyder-py3/temp.py --wdir
+Enter capacity of Jug 1: 55
+Enter capacity of Jug 2: 4
+Enter target amount of water: 54
+Solution Path:
+(0, 0)
+(55, 0)
+(55, 4)
+(0, 4)
+(4, 0)
+(4, 4)
+(8, 0)
+(8, 4)
+(12, 0)
+(12, 4)
+(16, 0)
+(16, 4)
+(20, 0)
+(20, 4)
+(24, 0)
+(24, 4)
+(28, 0)
+(28, 4)
+(32, 0)
+(32, 4)
+(36, 0)
+(36, 4)
+(40, 0)
+(40, 4)
+(44, 0)
+(44, 4)
+(48, 0)
+(48, 4)
+(52, 0)
+(52, 4)
+(55, 1)
+(0, 1)
+(1, 0)
+(1, 4)
+(5, 0)
+(5, 4)
+(9, 0)
+(9, 4)
+(13, 0)
+(13, 4)
+(17, 0)
+(17, 4)
+(21, 0)
+(21, 4)
+(25, 0)
+(25, 4)
+(29, 0)
+(29, 4)
+(33, 0)
+(33, 4)
+(37, 0)
+(37, 4)
+(41, 0)
+(41, 4)
+(45, 0)
+(45, 4)
+(49, 0)
+(49, 4)
+(53, 0)
+(53, 4)
+(55, 2)
+(0, 2)
+(2, 0)
+(2, 4)
+(6, 0)
+(6, 4)
+(10, 0)
+(10, 4)
+(14, 0)
+(14, 4)
+(18, 0)
+(18, 4)
+(22, 0)
+(22, 4)
+(26, 0)
+(26, 4)
+(30, 0)
+(30, 4)
+(34, 0)
+(34, 4)
+(38, 0)
+(38, 4)
+(42, 0)
+(42, 4)
+(46, 0)
+(46, 4)
+(50, 0)
+(50, 4)
+(54, 0)
