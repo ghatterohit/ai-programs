@@ -1,0 +1,2 @@
+%runfile C:/Users/student/.spyder-py3/temp.py --wdir
+Optimal Path: ['A', 'B', 'E', 'F']
